@@ -1,0 +1,26 @@
+.torrent-footer {
+    font-size: 12px;
+    color: #9C9B99;
+}
+
+.torrent-footer-icon {
+    vertical-align: middle;
+    font-size: 14px !important;
+}
+
+.torrent-action tr:hover button {
+    display: inline-block;
+}
+
+.torrent-action button {
+    display: none;
+}
+
+.addtorrent:not(.collapsed) {
+    transform: rotate(135deg);
+    box-shadow: 0 14px 26px -12px rgba(156, 39, 176, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
+}
+
+.addtorrent {
+    transition: all 0.3s ease;
+}

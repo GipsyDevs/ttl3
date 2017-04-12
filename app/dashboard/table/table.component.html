@@ -1,0 +1,100 @@
+<script>
+    $(document).ready(function () {
+        function animateloop() {
+            $("#progressinner").css({marginLeft: "-45%"});
+            $("#progressinner").animate({
+                marginLeft: "145%"
+            }, 2000, function () {
+                animateloop()
+            });
+        }
+
+        animateloop();
+    });
+</script>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">تورنت ها</h4>
+                        <p class="category">لیست تورنت های فعال در حساب شما</p>
+                        <button data-toggle="collapse" data-target="#demo"
+                                class="addtorrent btn btn-primary btn-round btn-fab collapsed"
+                                style="float: left;    margin-top: -15px;">
+                            <i class="material-icons">add</i>
+                            <div class="ripple-container"></div>
+                        </button>
+                    </div>
+                    <div id="demo" class="collapse" style="margin-top: 26px; margin-left: 20px; margin-right: 20px;">
+                        <div class="card">
+                            <div class="card-header" data-background-color="blue">
+                                <h4 class="title">افزودن تورنت</h4>
+                            </div>
+                            <div class="card-content table-responsive">
+                                <form class="form-inline">
+                                    <div class="form-group form-info label-floating is-empty">
+
+                                        <label class="control-label">آدرس تورنت</label>
+                                        <input #newTorrentName class="form-control" type="text">
+                                        <span class="material-input"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button (click)="addTorrent(newTorrentName.value);"
+                                                class="btn btn-info  btn-round btn-just-icon" type="button"><i
+                                                class="material-icons">check</i>
+                                            <div class="ripple-container"></div>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content table-responsive" style="margin-top: 26px;">
+                        <table class="table table-hover torrent-action">
+                            <thead class="text-danger">
+                            <tr>
+                                <th class="col-md-7">نام</th>
+                                <th class="col-md-4">حجم</th>
+                                <th class="col-md-1"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let torrent of torrents; trackBy: trackByTorrents">
+                                <td>
+                                    <div>{{torrent.name}}</div>
+                                    <div class="torrent-footer">
+                                        <i class="material-icons torrent-footer-icon">access_time</i> {{torrent.date
+                                        |
+                                        timeago}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar"
+                                             aria-valuemin="0" aria-valuemax="100" id="progressinner"
+                                             [ngStyle]="{'width': torrent.progress + '%'}"
+                                             style="margin-bottom: 0px;">
+                                            {{torrent.size |size}}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="td-actions text-right " style="    width: 48px;">
+                                    <button type="button" rel="tooltip" class="btn btn-danger">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

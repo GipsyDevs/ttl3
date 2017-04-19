@@ -67,8 +67,8 @@ material-dashboard-angular
 │   │   │   └── home.component.ts
 │   │   ├── icons
 │   │   │   ├── icons.component.html
-│   │   │   ├── icons.component.js
-│   │   │   └── icons.component.ts
+│   │   │   ├── login.component.js
+│   │   │   └── login.component.ts
 │   │   ├── maps
 │   │   │   ├── maps.component.html
 │   │   │   ├── maps.component.js

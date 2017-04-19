@@ -28,6 +28,7 @@
     "angular2-google-maps": "~0.16.0",
     "chartist": "~0.9.8",
     "core-js": "~2.4.1",
+    "font-awesome": "^4.7.0",
     "jquery": "~3.1.1",
     "mdi": "^1.9.33",
     "ng2-bootstrap": "~1.1.16",

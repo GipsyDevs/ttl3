@@ -22,13 +22,8 @@ var AppComponent = (function () {
         $.getScript('../assets/js/material-dashboard.js');
         $.getScript('../assets/js/initMenu.js');
     };
-    AppComponent.prototype.isMaps = function (path) {
-        if (path == window.location.pathname) {
-            return false;
-        }
-        else {
-            return true;
-        }
+    AppComponent.prototype.isLogin = function () {
+        return false;
     };
     AppComponent = __decorate([
         core_1.Component({

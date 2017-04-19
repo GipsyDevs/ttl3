@@ -12,6 +12,7 @@ import {NavbarModule} from "./shared/navbar/navbar.module";
 
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import {HttpModule} from "@angular/http";
+import {AuthGuard} from "./services/toleechGuard.service";
 
 @NgModule({
     imports: [
@@ -24,7 +25,10 @@ import {HttpModule} from "@angular/http";
         RouterModule.forRoot([])
     ],
     declarations: [AppComponent, DashboardComponent],
-    providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}, {provide: LOCALE_ID, useValue: "fa"}],
+    providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}, {
+        provide: LOCALE_ID,
+        useValue: "fa"
+    }, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {

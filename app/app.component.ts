@@ -1,8 +1,8 @@
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LocationStrategy, PlatformLocation, Location} from '@angular/common';
 
-declare var $:any;
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -10,11 +10,12 @@ declare var $:any;
     templateUrl: 'app.component.html'
 })
 
-export class AppComponent implements OnInit{
-    ngOnInit(){
+export class AppComponent implements OnInit {
+    ngOnInit() {
         $.getScript('../assets/js/material-dashboard.js');
         $.getScript('../assets/js/initMenu.js');
     }
+
     constructor(location: PlatformLocation) {
 
         location.onPopState(() => {
@@ -25,12 +26,8 @@ export class AppComponent implements OnInit{
         });
 
     }
-    public isMaps(path){
-        if(path == window.location.pathname){
-            return false;
-        }
-        else {
-            return true;
-        }
+
+    public isLogin() {
+        return false;
     }
 }

@@ -19,6 +19,7 @@ var footer_module_1 = require("./shared/footer/footer.module");
 var navbar_module_1 = require("./shared/navbar/navbar.module");
 var common_1 = require("@angular/common");
 var http_1 = require("@angular/http");
+var toleechGuard_service_1 = require("./services/toleechGuard.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,7 +35,10 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot([])
             ],
             declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent],
-            providers: [{ provide: common_1.LocationStrategy, useClass: common_1.PathLocationStrategy }, { provide: core_1.LOCALE_ID, useValue: "fa" }],
+            providers: [{ provide: common_1.LocationStrategy, useClass: common_1.PathLocationStrategy }, {
+                    provide: core_1.LOCALE_ID,
+                    useValue: "fa"
+                }, toleechGuard_service_1.AuthGuard],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

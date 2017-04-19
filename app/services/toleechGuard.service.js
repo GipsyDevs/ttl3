@@ -9,18 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var IconsComponent = (function () {
-    function IconsComponent() {
+var router_1 = require('@angular/router');
+var AuthGuard = (function () {
+    function AuthGuard(router) {
+        this.router = router;
     }
-    IconsComponent = __decorate([
-        core_1.Component({
-            selector: 'icons-cmp',
-            moduleId: module.id,
-            templateUrl: 'icons.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], IconsComponent);
-    return IconsComponent;
+    AuthGuard.prototype.canActivate = function (route, state) {
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['/login']);
+        return false;
+    };
+    AuthGuard = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router])
+    ], AuthGuard);
+    return AuthGuard;
 }());
-exports.IconsComponent = IconsComponent;
-//# sourceMappingURL=icons.component.js.map
+exports.AuthGuard = AuthGuard;
+//# sourceMappingURL=toleechGuard.service.js.map

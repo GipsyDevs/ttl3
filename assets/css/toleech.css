@@ -18,9 +18,36 @@
 
 .addtorrent:not(.collapsed) {
     transform: rotate(135deg);
-    box-shadow: 0 14px 26px -12px rgba(156, 39, 176, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
+    box-shadow: 0 14px 26px -12px rgba(156, 39, 176, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
 }
 
 .addtorrent {
     transition: all 0.3s ease;
+}
+
+.register-panel {
+    border-left: 1px solid rgba(220, 220, 220, 0.57);
+}
+
+.toleech-vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 30px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.toleech-large-font {
+    font-size: 30px !important;
+}
+
+.toleech-hcenter {
+    text-align: center;
 }

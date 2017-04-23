@@ -10,16 +10,16 @@ import {TimeAgoPipe} from "../filters/timeago.filter";
 import {SizePipe} from "../filters/size.filter";
 import {AuthGuard} from "../services/toleechGuard.service";
 import {RegisterComponent} from "./register/register.component";
+import {ForgetComponent} from "./forget/forget.component";
 
 export const MODULE_ROUTES: Route[] = [
-    // { path: 'dashboard', component: HomeComponent },
-    {path: 'user', component: UserComponent ,canActivate: [AuthGuard]},
-    {path: 'table', component: TableComponent,canActivate: [AuthGuard]},
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
+    {path: 'table', component: TableComponent, canActivate: [AuthGuard]},
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'forget', component: ForgetComponent},
+    {path: 'forget', component: ForgetComponent},
     {path: 'notifications', component: NotificationsComponent},
-    // { path: 'typography', component: TypographyComponent },
-    // { path: 'maps', component: MapsComponent },
     {path: '', redirectTo: 'table', pathMatch: 'full'}
 ]
 
@@ -29,6 +29,7 @@ export const MODULE_COMPONENTS = [
     TableComponent,
     LoginComponent,
     RegisterComponent,
+    ForgetComponent,
     NotificationsComponent,
     TypographyComponent,
     MapsComponent,

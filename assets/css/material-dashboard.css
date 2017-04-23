@@ -458,7 +458,9 @@ h2.title {
     position: relative;
     top: 0;
     height: 100vh;
-    background-image: url("../../assets/img/ballon.jpg");
+    background: url("../../assets/img/photo-01.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .moving-tab {

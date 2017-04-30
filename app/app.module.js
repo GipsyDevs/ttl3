@@ -20,6 +20,8 @@ var navbar_module_1 = require("./shared/navbar/navbar.module");
 var common_1 = require("@angular/common");
 var http_1 = require("@angular/http");
 var toleechGuard_service_1 = require("./services/toleechGuard.service");
+var forms_1 = require("@angular/forms");
+var toleech_global_1 = require("./globals/toleech.global");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,13 +34,15 @@ var AppModule = (function () {
                 navbar_module_1.NavbarModule,
                 footer_module_1.FooterModule,
                 http_1.HttpModule,
+                forms_1.FormsModule,
+                forms_1.ReactiveFormsModule,
                 router_1.RouterModule.forRoot([])
             ],
             declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent],
             providers: [{ provide: common_1.LocationStrategy, useClass: common_1.PathLocationStrategy }, {
                     provide: core_1.LOCALE_ID,
                     useValue: "fa"
-                }, toleechGuard_service_1.AuthGuard],
+                }, toleechGuard_service_1.AuthGuard, toleech_global_1.toleechSettings],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

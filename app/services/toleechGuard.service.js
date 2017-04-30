@@ -10,12 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var toleech_global_1 = require("../globals/toleech.global");
 var AuthGuard = (function () {
     function AuthGuard(router) {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function (route, state) {
-        // not logged in so redirect to login page with the return url
+        if (toleech_global_1.toleechSettings.toleechAuth)
+            return true;
         this.router.navigate(['/login']);
         return false;
     };

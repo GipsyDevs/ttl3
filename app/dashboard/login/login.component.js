@@ -9,9 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var toleech_global_1 = require("../../globals/toleech.global");
 var LoginComponent = (function () {
     function LoginComponent() {
     }
+    LoginComponent.prototype.loginUser = function (event) {
+        console.log(toleech_global_1.toleechSettings.toleechAuth);
+        toleech_global_1.toleechSettings.toleechAuth = true;
+        console.log(event);
+        console.log("LogedIn!");
+    };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'icons-cmp',

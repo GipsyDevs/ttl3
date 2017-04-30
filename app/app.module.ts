@@ -13,6 +13,8 @@ import {NavbarModule} from "./shared/navbar/navbar.module";
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import {HttpModule} from "@angular/http";
 import {AuthGuard} from "./services/toleechGuard.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {toleechSettings} from "./globals/toleech.global";
 
 @NgModule({
     imports: [
@@ -22,13 +24,15 @@ import {AuthGuard} from "./services/toleechGuard.service";
         NavbarModule,
         FooterModule,
         HttpModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forRoot([])
     ],
     declarations: [AppComponent, DashboardComponent],
     providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}, {
         provide: LOCALE_ID,
         useValue: "fa"
-    }, AuthGuard],
+    }, AuthGuard, toleechSettings],
     bootstrap: [AppComponent]
 })
 export class AppModule {

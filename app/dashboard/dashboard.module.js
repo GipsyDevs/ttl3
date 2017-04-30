@@ -12,13 +12,14 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var dashboard_routes_1 = require("./dashboard.routes");
 var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require("@angular/forms");
 var DashboardModule = (function () {
     function DashboardModule() {
     }
     DashboardModule = __decorate([
         core_1.NgModule({
             imports: [
-                router_1.RouterModule.forChild(dashboard_routes_1.MODULE_ROUTES), platform_browser_1.BrowserModule
+                router_1.RouterModule.forChild(dashboard_routes_1.MODULE_ROUTES), platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, forms_1.FormsModule
             ],
             declarations: [dashboard_routes_1.MODULE_COMPONENTS]
         }), 

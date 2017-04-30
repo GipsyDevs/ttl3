@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {toleechSettings} from "../globals/toleech.global";
+import { Cookie } from 'ng2-cookies';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -8,8 +10,10 @@ export class AuthGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        // not logged in so redirect to login page with the return url
+        if (toleechSettings.toleechAuth)
+            return true;
         this.router.navigate(['/login']);
         return false;
+
     }
 }

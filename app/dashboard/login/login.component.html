@@ -11,12 +11,12 @@
                     <div class="card-content">
                         <div class="row">
                             <div class="col-md-12">
-                                <form>
+                                <form [formGroup]="loginForm" (ngSubmit)="loginUser($event)">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-black label-floating is-empty">
                                                 <label class="control-label">ایمیل یا شماره تلفن همراه</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" formControlName="username"  >
                                             </div>
                                         </div>
                                     </div>
@@ -26,7 +26,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group form-black label-floating is-empty">
                                                 <label class="control-label">رمز عبور</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" class="form-control" formControlName="password">
                                             </div>
                                         </div>
                                     </div>

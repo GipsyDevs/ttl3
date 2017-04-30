@@ -1,6 +1,7 @@
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {Component, OnInit} from '@angular/core';
 import {LocationStrategy, PlatformLocation, Location} from '@angular/common';
+import {toleechSettings} from "./globals/toleech.global";
 
 declare var $: any;
 

@@ -6,13 +6,13 @@ import { Cookie } from 'ng2-cookies';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router) {
+    constructor(private router: Router,private tlsetting: toleechSettings) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (toleechSettings.toleechAuth)
-            return true;
-        this.router.navigate(['/login']);
+        if (this.tlsetting.checkLogin())
+             return true;
+         this.router.navigate(['/login']);
         return false;
 
     }

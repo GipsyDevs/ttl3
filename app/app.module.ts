@@ -15,6 +15,7 @@ import {HttpModule} from "@angular/http";
 import {AuthGuard} from "./services/toleechGuard.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {toleechSettings} from "./globals/toleech.global";
+import {ToasterModule} from "angular2-toaster";
 
 @NgModule({
     imports: [
@@ -24,7 +25,7 @@ import {toleechSettings} from "./globals/toleech.global";
         NavbarModule,
         FooterModule,
         HttpModule,
-        FormsModule,
+        ToasterModule,
         ReactiveFormsModule,
         RouterModule.forRoot([])
     ],

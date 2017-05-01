@@ -22,6 +22,7 @@ var http_1 = require("@angular/http");
 var toleechGuard_service_1 = require("./services/toleechGuard.service");
 var forms_1 = require("@angular/forms");
 var toleech_global_1 = require("./globals/toleech.global");
+var angular2_toaster_1 = require("angular2-toaster");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,7 +35,7 @@ var AppModule = (function () {
                 navbar_module_1.NavbarModule,
                 footer_module_1.FooterModule,
                 http_1.HttpModule,
-                forms_1.FormsModule,
+                angular2_toaster_1.ToasterModule,
                 forms_1.ReactiveFormsModule,
                 router_1.RouterModule.forRoot([])
             ],

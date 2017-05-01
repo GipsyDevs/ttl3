@@ -10,8 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var toleech_global_1 = require("./globals/toleech.global");
 var AppComponent = (function () {
-    function AppComponent(location) {
+    function AppComponent(location, toleechlocal) {
+        var _this = this;
+        this.toleechlocal = toleechlocal;
+        this.login = false;
+        toleechlocal.userLoggedIn$.subscribe(function (eventlogin) {
+            console.log(_this.login);
+            console.log("login " + eventlogin + " occured!");
+            _this.login = eventlogin;
+        });
         location.onPopState(function () {
             // $('.sidebar-wrapper .nav-container div').removeClass('.moving-tab');
             // $.getScript('../assets/js/material-dashboard-angular.js');
@@ -22,16 +31,13 @@ var AppComponent = (function () {
         $.getScript('../assets/js/material-dashboard.js');
         $.getScript('../assets/js/initMenu.js');
     };
-    AppComponent.prototype.isLogin = function () {
-        return false;
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             moduleId: module.id,
             templateUrl: 'app.component.html'
         }), 
-        __metadata('design:paramtypes', [common_1.PlatformLocation])
+        __metadata('design:paramtypes', [common_1.PlatformLocation, toleech_global_1.toleechSettings])
     ], AppComponent);
     return AppComponent;
 }());

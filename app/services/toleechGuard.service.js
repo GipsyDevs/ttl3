@@ -12,18 +12,19 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var toleech_global_1 = require("../globals/toleech.global");
 var AuthGuard = (function () {
-    function AuthGuard(router) {
+    function AuthGuard(router, tlsetting) {
         this.router = router;
+        this.tlsetting = tlsetting;
     }
     AuthGuard.prototype.canActivate = function (route, state) {
-        if (toleech_global_1.toleechSettings.toleechAuth)
+        if (this.tlsetting.checkLogin())
             return true;
         this.router.navigate(['/login']);
         return false;
     };
     AuthGuard = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, toleech_global_1.toleechSettings])
     ], AuthGuard);
     return AuthGuard;
 }());

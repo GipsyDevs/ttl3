@@ -4,7 +4,20 @@
 
 
 'use strict';
+import {Subject} from "rxjs/Subject";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 export class toleechSettings {
-    public static toleechAuth = false;
+    private userLoggedInSourece = new BehaviorSubject<boolean>(false);
+    userLoggedIn$ = this.userLoggedInSourece.asObservable();
+
+
+    login() {
+        this.userLoggedInSourece.next(true)
+    }
+
+    checkLogin() {
+        return this.userLoggedInSourece.getValue();
+    }
+
 }
 

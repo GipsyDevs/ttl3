@@ -14,13 +14,13 @@
 
  */
 
- 
+
 $(document).ready(function(){
     $moving_tab = $('<div class="moving-tab"/>');
     $('.sidebar .nav-container').append($moving_tab);
 
     $this = $('.sidebar .nav').find('li.active a');
-    animationSidebar($this, false);
+    animationSidebar($('#torrentmenu'), false);
     $('div').removeClass('.moving-tab');
     if (window.history && window.history.pushState) {
 
@@ -46,7 +46,7 @@ $('.sidebar .nav > li > a').click(function(){
 });
 
 function animationSidebar($this, animate){
-    // console.log('incep animatia si butonul pe care sunt acum este:', $this[0].href );
+    console.log('incep animatia si butonul pe care sunt acum este:', $this );
 
     $current_li_distance = $this.parent('li').position().top - 10;
 

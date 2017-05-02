@@ -458,7 +458,8 @@ h2.title {
     position: relative;
     top: 0;
     height: 100vh;
-    background: url("../../assets/img/photo-01.jpg") no-repeat center center fixed;
+    background: url("../../assets/img/White-Abstract-Pictures.png") no-repeat center center fixed;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%,rgba(255,255,255,0.6) 100%), url("../../assets/img/White-Abstract-Pictures.png");
     -webkit-background-size: cover;
     background-size: cover;
 }

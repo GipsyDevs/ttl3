@@ -10,23 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var torrent_service_1 = require("../../services/torrent.service");
-var TableComponent = (function () {
-    function TableComponent(torrentService) {
+var TorrentComponent = (function () {
+    function TorrentComponent(torrentService) {
         this.torrentService = torrentService;
         this.torrents = [];
         this.getTorrents();
         console.log(this.torrents);
     }
-    TableComponent.prototype.trackByTorrents = function (index, torrent) {
+    TorrentComponent.prototype.trackByTorrents = function (index, torrent) {
         return torrent.id;
     };
-    TableComponent.prototype.getTorrents = function () {
+    TorrentComponent.prototype.getTorrents = function () {
         var _this = this;
         this.torrentService.getTorrents().debounceTime(400)
             .distinctUntilChanged()
             .subscribe(function (torrents) { return _this.torrents = torrents; }, function (error) { return _this.errorMessage = error; });
     };
-    TableComponent.prototype.addTorrent = function (url) {
+    TorrentComponent.prototype.addTorrent = function (url) {
         var _this = this;
         if (!url) {
             return;
@@ -35,16 +35,16 @@ var TableComponent = (function () {
         this.torrentService.addTorrent(url)
             .subscribe(function (torrents) { return result = torrents; }, function (error) { return _this.errorMessage = error; });
     };
-    TableComponent = __decorate([
+    TorrentComponent = __decorate([
         core_1.Component({
             selector: 'table-cmp',
             moduleId: module.id,
             providers: [torrent_service_1.TorrentService, { provide: core_1.LOCALE_ID, useValue: "fa" }],
-            templateUrl: 'table.component.html'
+            templateUrl: 'torrents.component.html'
         }), 
         __metadata('design:paramtypes', [torrent_service_1.TorrentService])
-    ], TableComponent);
-    return TableComponent;
+    ], TorrentComponent);
+    return TorrentComponent;
 }());
-exports.TableComponent = TableComponent;
-//# sourceMappingURL=table.component.js.map
+exports.TorrentComponent = TorrentComponent;
+//# sourceMappingURL=torrents.component.js.map

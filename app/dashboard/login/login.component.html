@@ -13,12 +13,14 @@
                     <div class="card-content">
                         <div class="row">
                             <div class="col-md-12">
-                                <form [formGroup]="loginForm" novalidate (ngSubmit)="login(loginForm.value, loginForm.valid)">
+                                <form [formGroup]="loginForm" novalidate
+                                      (ngSubmit)="loginCheck()">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-black label-floating is-empty">
                                                 <label class="control-label">ایمیل یا شماره تلفن همراه</label>
-                                                <input type="text" class="form-control" formControlName="name"   title="title">
+                                                <input type="text" class="form-control" formControlName="name"
+                                                       title="title">
                                             </div>
                                         </div>
                                     </div>
@@ -28,14 +30,19 @@
                                         <div class="col-md-12">
                                             <div class="form-group form-black label-floating is-empty">
                                                 <label class="control-label">رمز عبور</label>
-                                                <input type="password" class="form-control" formControlName="password" title="title">
+                                                <input type="password" class="form-control" formControlName="password"
+                                                       title="title">
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <button type="submit" class="btn btn-danger pull-right">ورود</button>
+                                    <button type="button" class="btn btn-danger pull-right" [disabled]="this.submitted"
+                                            (click)="loginCheck()">ورود
+                                    </button>
                                     <p class="pull-left text-gray"><a routerLink="/forget">فراموش کردم</a></p>
+                                    <re-captcha badge="inline" [hidden]="true" (captchaResponse)="loginAction($event,loginForm.value, loginForm.valid)" site_key="6LeTgB0UAAAAAPt--UmRhkjQucqYphdMmbMPNwcL" language="fa"
+                                                size="invisible" ></re-captcha>
 
                                     <div class="clearfix"></div>
                                 </form>
@@ -44,7 +51,9 @@
                         <div class="row">
                             <div class="col-md-12 toleech-hcenter toleech-topborder">
                                 <h2>تازه واردید ؟</h2>
-                                <button type="submit" class="btn btn-danger btn-xlarge" routerLink="/register">ثبت نام کنید!</button>
+                                <button type="submit" class="btn btn-danger btn-xlarge" routerLink="/register">ثبت نام
+                                    کنید!
+                                </button>
 
                             </div>
                         </div>

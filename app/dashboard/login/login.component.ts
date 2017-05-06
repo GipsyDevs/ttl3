@@ -1,9 +1,12 @@
-import {Component} from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import {Component, ViewChild} from "@angular/core";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {toleechSettings} from "../../globals/toleech.global";
-import { Login } from './login.interface';
+import {Login} from "./login.interface";
 import {Router} from "@angular/router";
-import {ToasterModule, ToasterService} from 'angular2-toaster';
+import {ToasterService} from "angular2-toaster";
+import {toleechApi} from "../../services/toleechApi.service";
+import {ReCaptchaComponent} from "angular2-recaptcha";
+
 
 @Component({
     selector: 'icons-cmp',
@@ -13,34 +16,45 @@ import {ToasterModule, ToasterService} from 'angular2-toaster';
 
 export class LoginComponent {
     public loginForm: FormGroup; // our model driven form
-    public submitted: boolean; // keep track on whether form is submitted
+    public submitted: boolean = false; // keep track on whether form is submitted
     public events: any[] = []; // use later to display form changes
+    @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
 
-    constructor(private router: Router,public toleechlocal: toleechSettings,private _fb: FormBuilder,private toasterService: ToasterService) {
+    constructor(private router: Router, public toleechlocal: toleechSettings, private _fb: FormBuilder, private toasterService: ToasterService, private toleechApi: toleechApi) {
     }
 
     ngOnInit() {
 
         // the short way
         this.loginForm = this._fb.group({
-            name: ['', [<any>Validators.required, <any>Validators.minLength(5)]],
-            password: ['', [<any>Validators.required, <any>Validators.minLength(5)]],
+            name: ['', [<any>Validators.required, <any>Validators.minLength(3)]],
+            password: ['', [<any>Validators.required, <any>Validators.minLength(3)]],
         });
     }
 
-    login(model: Login, isValid: boolean) {
-        if(isValid) {
-            this.submitted = true; // set form submit to true
-            this.router.navigate(['/table']);
+    loginCheck() {
+        this.captcha.execute();
+    }
 
-            // check if model is valid
-            // if valid, call API to save customer
+    loginAction(token, model: Login, isValid: boolean) {
+        if (isValid) {
+            this.submitted = true;
+            this.toleechApi.login(model.name, model.password, token).subscribe(
+                data => {
+                    this.toleechlocal.login();
+                    this.router.navigate(['/torrents']);
+                },
+                error => {
+                    this.submitted = false;
+                    this.toasterService.pop('error', 'خطا', 'خطایی رخ داده است، اتصال اینترنت خود چک کنید');
+                }
+            );
+
             console.log(model, isValid);
-            this.toleechlocal.login();
-            console.log(event);
-            console.log("LogedIn!")
-        }else{
+        } else {
+            console.log("invalidofsky");
             this.toasterService.pop('error', 'خطا', 'نام کاربری یا رمز عبور اشتباه است!');
         }
+        this.captcha.reset();
     }
 }

@@ -16,6 +16,8 @@ import {AuthGuard} from "./services/toleechGuard.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {toleechSettings} from "./globals/toleech.global";
 import {ToasterModule} from "angular2-toaster";
+import {toleechApi} from "./services/toleechApi.service";
+import {ReCaptchaModule} from "angular2-recaptcha";
 
 @NgModule({
     imports: [
@@ -25,6 +27,7 @@ import {ToasterModule} from "angular2-toaster";
         NavbarModule,
         FooterModule,
         HttpModule,
+        ReCaptchaModule,
         ToasterModule,
         ReactiveFormsModule,
         RouterModule.forRoot([])
@@ -33,7 +36,7 @@ import {ToasterModule} from "angular2-toaster";
     providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}, {
         provide: LOCALE_ID,
         useValue: "fa"
-    }, AuthGuard, toleechSettings],
+    }, AuthGuard, toleechSettings,toleechApi],
     bootstrap: [AppComponent]
 })
 export class AppModule {

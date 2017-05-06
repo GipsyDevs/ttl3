@@ -10,23 +10,24 @@
                     </div>
                     <div class="card-content">
                         <div class="row">
-                            <div class="col-md-6 toleech-hcenter " >
+                            <div class="col-md-6 toleech-hcenter ">
                                 <p class="text-gray"> مدرن باشید! با تلگرام ثبت نام کنید </p>
 
                                 <a href="https://t.me/toleechbot?start=register"
-                                        class="btn btn-info btn-xlarge" type="button"> ثبت نام با تلگرام
+                                   class="btn btn-info btn-xlarge" type="button"> ثبت نام با تلگرام
                                     <i class="fa fa-paper-plane toleech-large-font"></i>
                                     <div class="ripple-container"></div>
 
                                 </a>
                             </div>
                             <div class="col-md-6 register-panel">
-                                <form>
+                                <form [formGroup]="registerForm" novalidate
+                                      (ngSubmit)="registerCheck()">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-black label-floating is-empty">
                                                 <label class="control-label">ایمیل یا شماره تلفن همراه</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" formControlName="name">
                                             </div>
                                         </div>
                                     </div>
@@ -36,15 +37,21 @@
                                         <div class="col-md-12">
                                             <div class="form-group form-black label-floating is-empty">
                                                 <label class="control-label">رمز عبور</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" class="form-control" formControlName="password">
                                             </div>
                                         </div>
                                     </div>
 
 
-                                    <button type="submit" class="btn btn-danger pull-right">ثبت نام</button>
-                                    <p class="pull-left text-gray">قبلا ثبت نام کردید؟ <a routerLink="/login">ورود</a></p>
-
+                                    <button type="button" class="btn btn-danger pull-right" [disabled]="this.submitted"
+                                            (click)="registerCheck()">ثبت نام
+                                    </button>
+                                    <p class="pull-left text-gray">قبلا ثبت نام کردید؟ <a routerLink="/login">ورود</a>
+                                    </p>
+                                    <re-captcha badge="inline" [hidden]="true"
+                                                (captchaResponse)="registerAction($event,registerForm.value, registerForm.valid)"
+                                                site_key="6LeTgB0UAAAAAPt--UmRhkjQucqYphdMmbMPNwcL" language="fa"
+                                                size="invisible"></re-captcha>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

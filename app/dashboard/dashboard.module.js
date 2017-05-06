@@ -14,13 +14,14 @@ var dashboard_routes_1 = require("./dashboard.routes");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var angular2_toaster_1 = require("angular2-toaster");
+var angular2_recaptcha_1 = require("angular2-recaptcha");
 var DashboardModule = (function () {
     function DashboardModule() {
     }
     DashboardModule = __decorate([
         core_1.NgModule({
             imports: [
-                router_1.RouterModule.forChild(dashboard_routes_1.MODULE_ROUTES), platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, forms_1.FormsModule, angular2_toaster_1.ToasterModule
+                router_1.RouterModule.forChild(dashboard_routes_1.MODULE_ROUTES), platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, forms_1.FormsModule, angular2_toaster_1.ToasterModule, angular2_recaptcha_1.ReCaptchaModule
             ],
             declarations: [dashboard_routes_1.MODULE_COMPONENTS]
         }), 

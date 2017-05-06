@@ -6,10 +6,10 @@ import {Torrent} from "../../services/torrent";
     selector: 'table-cmp',
     moduleId: module.id,
     providers: [TorrentService, {provide: LOCALE_ID, useValue: "fa"}],
-    templateUrl: 'table.component.html'
+    templateUrl: 'torrents.component.html'
 })
 
-export class TableComponent {
+export class TorrentComponent {
     public torrents = [];
     public errorMessage;
 

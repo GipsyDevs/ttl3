@@ -23,6 +23,8 @@ var toleechGuard_service_1 = require("./services/toleechGuard.service");
 var forms_1 = require("@angular/forms");
 var toleech_global_1 = require("./globals/toleech.global");
 var angular2_toaster_1 = require("angular2-toaster");
+var toleechApi_service_1 = require("./services/toleechApi.service");
+var angular2_recaptcha_1 = require("angular2-recaptcha");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,6 +37,7 @@ var AppModule = (function () {
                 navbar_module_1.NavbarModule,
                 footer_module_1.FooterModule,
                 http_1.HttpModule,
+                angular2_recaptcha_1.ReCaptchaModule,
                 angular2_toaster_1.ToasterModule,
                 forms_1.ReactiveFormsModule,
                 router_1.RouterModule.forRoot([])
@@ -43,7 +46,7 @@ var AppModule = (function () {
             providers: [{ provide: common_1.LocationStrategy, useClass: common_1.PathLocationStrategy }, {
                     provide: core_1.LOCALE_ID,
                     useValue: "fa"
-                }, toleechGuard_service_1.AuthGuard, toleech_global_1.toleechSettings],
+                }, toleechGuard_service_1.AuthGuard, toleech_global_1.toleechSettings, toleechApi_service_1.toleechApi],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

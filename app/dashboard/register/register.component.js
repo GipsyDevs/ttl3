@@ -33,17 +33,26 @@ var RegisterComponent = (function () {
         });
     };
     RegisterComponent.prototype.registerCheck = function () {
-        console.log("Clicked");
-        this.captcha.reset();
+        this.toasterService.pop('error', 'خطا', ' فرم را پر کنید. رمز باید حداقل ۴ حرف باشد');
         this.captcha.execute();
+    };
+    RegisterComponent.prototype.registerCanceled = function () {
+        this.submitted = false;
     };
     RegisterComponent.prototype.registerAction = function (token, model, isValid) {
         var _this = this;
         if (isValid) {
             this.submitted = true;
             this.toleechApi.register(model.name, model.password, token).subscribe(function (data) {
-                _this.toleechlocal.login();
-                _this.router.navigate(['/torrents']);
+                console.log(data);
+                if (data.status == true) {
+                    _this.toleechlocal.login(data);
+                    _this.router.navigate(['/torrents']);
+                }
+                else {
+                    _this.submitted = false;
+                    _this.toasterService.pop('error', 'خطا', 'این نام کاربری قبلا ثبت شده است!');
+                }
             }, function (error) {
                 _this.submitted = false;
                 _this.toasterService.pop('error', 'خطا', 'خطایی رخ داده است، اتصال اینترنت خود چک کنید');
@@ -51,8 +60,10 @@ var RegisterComponent = (function () {
             console.log(model, isValid);
         }
         else {
-            this.toasterService.pop('error', 'خطا', 'نام کاربری و رمز عبور را وارد کنید!');
+            console.log("invalidofsky");
+            this.toasterService.pop('error', 'خطا', ' فرم را پر کنید. رمز باید حداقل ۴ حرف باشد');
         }
+        this.captcha.reset();
     };
     __decorate([
         // use later to display form changes

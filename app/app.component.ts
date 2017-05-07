@@ -1,6 +1,5 @@
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {LocationStrategy, PlatformLocation, Location} from '@angular/common';
+import {Component, OnInit} from "@angular/core";
+import {PlatformLocation} from "@angular/common";
 import {toleechSettings} from "./globals/toleech.global";
 
 declare var $: any;
@@ -20,7 +19,7 @@ export class AppComponent implements OnInit {
     }
 
     constructor(location: PlatformLocation, private toleechlocal: toleechSettings) {
-
+        toleechlocal.checkLogin();
         toleechlocal.userLoggedIn$.subscribe(
             eventlogin => {
                 console.log(this.login);

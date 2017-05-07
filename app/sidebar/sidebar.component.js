@@ -8,15 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var sidebar_routes_config_1 = require('./sidebar-routes.config');
-var sidebar_metadata_1 = require('./sidebar.metadata');
+var core_1 = require("@angular/core");
+var sidebar_routes_config_1 = require("./sidebar-routes.config");
+var sidebar_metadata_1 = require("./sidebar.metadata");
+var toleech_global_1 = require("../globals/toleech.global");
+var router_1 = require("@angular/router");
 var SidebarComponent = (function () {
-    function SidebarComponent() {
+    function SidebarComponent(router, toleechlocal) {
+        this.router = router;
+        this.toleechlocal = toleechlocal;
     }
     SidebarComponent.prototype.ngOnInit = function () {
         $.getScript('../../assets/js/material-dashboard-angular.js');
         this.menuItems = sidebar_routes_config_1.ROUTES.filter(function (menuItem) { return menuItem.menuType !== sidebar_metadata_1.MenuType.BRAND; });
+    };
+    SidebarComponent.prototype.logout = function () {
+        console.log("LogOutClicked");
+        this.toleechlocal.logout();
+        this.router.navigate(['/login']);
     };
     SidebarComponent = __decorate([
         core_1.Component({
@@ -24,7 +33,7 @@ var SidebarComponent = (function () {
             selector: 'sidebar-cmp',
             templateUrl: 'sidebar.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router, toleech_global_1.toleechSettings])
     ], SidebarComponent);
     return SidebarComponent;
 }());

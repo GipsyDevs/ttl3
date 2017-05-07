@@ -27,10 +27,10 @@ var toleechApi = (function () {
         this.baseUrl = 'http://127.0.0.1:8654/api/';
     }
     toleechApi.prototype.login = function (user, password, recaptcha) {
-        return this._requestHelper('login', { user: user, password: password, recaptcha: recaptcha });
+        return this._requestHelper('Login', { user: user, password: password, recaptcha: recaptcha });
     };
     toleechApi.prototype.register = function (user, password, recaptcha) {
-        return this._requestHelper('register', { user: user, password: password, recaptcha: recaptcha });
+        return this._requestHelper('Register', { user: user, password: password, recaptcha: recaptcha });
     };
     toleechApi.prototype._requestHelper = function (api, payload) {
         var headers = new http_1.Headers();

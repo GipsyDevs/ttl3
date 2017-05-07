@@ -41,8 +41,14 @@ export class LoginComponent {
             this.submitted = true;
             this.toleechApi.login(model.name, model.password, token).subscribe(
                 data => {
-                    this.toleechlocal.login();
-                    this.router.navigate(['/torrents']);
+                    console.log(data);
+                    if (data.status == true) {
+                        this.toleechlocal.login(data);
+                        this.router.navigate(['/torrents']);
+                    } else {
+                        this.submitted = false;
+                        this.toasterService.pop('error', 'خطا', 'نام کاربری یا رمز عبور اشتباه است!');
+                    }
                 },
                 error => {
                     this.submitted = false;

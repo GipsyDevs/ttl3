@@ -12,8 +12,8 @@ import {NavbarModule} from "./shared/navbar/navbar.module";
 
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import {HttpModule} from "@angular/http";
-import {AuthGuard} from "./services/toleechGuard.service";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AuthGuard, GuestGaurd} from "./services/toleechGuard.service";
+import {ReactiveFormsModule} from "@angular/forms";
 import {toleechSettings} from "./globals/toleech.global";
 import {ToasterModule} from "angular2-toaster";
 import {toleechApi} from "./services/toleechApi.service";
@@ -36,7 +36,7 @@ import {ReCaptchaModule} from "angular2-recaptcha";
     providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}, {
         provide: LOCALE_ID,
         useValue: "fa"
-    }, AuthGuard, toleechSettings,toleechApi],
+    }, AuthGuard, GuestGaurd, toleechSettings, toleechApi],
     bootstrap: [AppComponent]
 })
 export class AppModule {

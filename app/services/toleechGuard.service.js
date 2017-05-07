@@ -29,4 +29,22 @@ var AuthGuard = (function () {
     return AuthGuard;
 }());
 exports.AuthGuard = AuthGuard;
+var GuestGaurd = (function () {
+    function GuestGaurd(router, tlsetting) {
+        this.router = router;
+        this.tlsetting = tlsetting;
+    }
+    GuestGaurd.prototype.canActivate = function (route, state) {
+        if (!this.tlsetting.checkLogin())
+            return true;
+        this.router.navigate(['/torrents']);
+        return false;
+    };
+    GuestGaurd = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router, toleech_global_1.toleechSettings])
+    ], GuestGaurd);
+    return GuestGaurd;
+}());
+exports.GuestGaurd = GuestGaurd;
 //# sourceMappingURL=toleechGuard.service.js.map

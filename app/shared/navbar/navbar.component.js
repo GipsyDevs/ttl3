@@ -8,12 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var sidebar_routes_config_1 = require('../.././sidebar/sidebar-routes.config');
-var sidebar_metadata_1 = require('../.././sidebar/sidebar.metadata');
-var common_1 = require('@angular/common');
+var core_1 = require("@angular/core");
+var sidebar_routes_config_1 = require("../../sidebar/sidebar-routes.config");
+var sidebar_metadata_1 = require("../../sidebar/sidebar.metadata");
+var common_1 = require("@angular/common");
 var NavbarComponent = (function () {
     function NavbarComponent(location) {
+        var _this = this;
+        this.login = false;
         this.location = location;
     }
     NavbarComponent.prototype.ngOnInit = function () {
@@ -21,9 +23,6 @@ var NavbarComponent = (function () {
     };
     NavbarComponent.prototype.getTitle = function () {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        if (titlee.charAt(0) === '#') {
-            titlee = titlee.slice(2);
-        }
         for (var item = 0; item < this.listTitles.length; item++) {
             if (this.listTitles[item].path === titlee) {
                 return this.listTitles[item].title;

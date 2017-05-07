@@ -32,9 +32,14 @@ export class RegisterComponent {
     }
 
     registerCheck() {
-        console.log("Clicked");
-        this.captcha.reset();
+        this.toasterService.pop('error', 'خطا', ' فرم را پر کنید. رمز باید حداقل ۴ حرف باشد');
+
         this.captcha.execute();
+    }
+
+    registerCanceled() {
+        this.submitted = false;
+
     }
 
     registerAction(token, model: Register, isValid: boolean) {
@@ -42,8 +47,14 @@ export class RegisterComponent {
             this.submitted = true;
             this.toleechApi.register(model.name, model.password, token).subscribe(
                 data => {
-                    this.toleechlocal.login();
-                    this.router.navigate(['/torrents']);
+                    console.log(data);
+                    if (data.status == true) {
+                        this.toleechlocal.login(data);
+                        this.router.navigate(['/torrents']);
+                    } else {
+                        this.submitted = false;
+                        this.toasterService.pop('error', 'خطا', 'این نام کاربری قبلا ثبت شده است!');
+                    }
                 },
                 error => {
                     this.submitted = false;
@@ -53,8 +64,10 @@ export class RegisterComponent {
 
             console.log(model, isValid);
         } else {
-            this.toasterService.pop('error', 'خطا', 'نام کاربری و رمز عبور را وارد کنید!');
+            console.log("invalidofsky");
+            this.toasterService.pop('error', 'خطا', ' فرم را پر کنید. رمز باید حداقل ۴ حرف باشد');
         }
+        this.captcha.reset();
     }
 
 }

@@ -46,7 +46,7 @@ var AppModule = (function () {
             providers: [{ provide: common_1.LocationStrategy, useClass: common_1.PathLocationStrategy }, {
                     provide: core_1.LOCALE_ID,
                     useValue: "fa"
-                }, toleechGuard_service_1.AuthGuard, toleech_global_1.toleechSettings, toleechApi_service_1.toleechApi],
+                }, toleechGuard_service_1.AuthGuard, toleechGuard_service_1.GuestGaurd, toleech_global_1.toleechSettings, toleechApi_service_1.toleechApi],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -21,11 +21,11 @@ export class toleechApi {
     }
 
     public login(user: string, password: string, recaptcha: string): Observable<ToleechUser> {
-        return this._requestHelper('login', {user, password, recaptcha})
+        return this._requestHelper('Login', {user, password, recaptcha})
     }
 
     public register(user: string, password: string, recaptcha: string): Observable<ToleechUser> {
-        return this._requestHelper('register', {user, password, recaptcha})
+        return this._requestHelper('Register', {user, password, recaptcha})
     }
 
     private _requestHelper(api, payload) {

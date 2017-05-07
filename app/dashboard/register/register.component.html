@@ -49,7 +49,7 @@
                                     <p class="pull-left text-gray">قبلا ثبت نام کردید؟ <a routerLink="/login">ورود</a>
                                     </p>
                                     <re-captcha badge="inline" [hidden]="true"
-                                                (captchaResponse)="registerAction($event,registerForm.value, registerForm.valid)"
+                                                (captchaResponse)="registerAction($event,registerForm.value, registerForm.valid)" (captchaExpired)="registerCanceled()"
                                                 site_key="6LeTgB0UAAAAAPt--UmRhkjQucqYphdMmbMPNwcL" language="fa"
                                                 size="invisible"></re-captcha>
                                     <div class="clearfix"></div>

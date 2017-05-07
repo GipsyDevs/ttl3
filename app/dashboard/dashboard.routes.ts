@@ -6,7 +6,7 @@ import {NotificationsComponent} from "./notifications/notifications.component";
 import {TypographyComponent} from "./typography/typography.component";
 import {TimeAgoPipe} from "../filters/timeago.filter";
 import {SizePipe} from "../filters/size.filter";
-import {AuthGuard} from "../services/toleechGuard.service";
+import {AuthGuard, GuestGaurd} from "../services/toleechGuard.service";
 import {RegisterComponent} from "./register/register.component";
 import {ForgetComponent} from "./forget/forget.component";
 import {TorrentComponent} from "./torrents/torrents.component";
@@ -14,10 +14,9 @@ import {TorrentComponent} from "./torrents/torrents.component";
 export const MODULE_ROUTES: Route[] = [
     {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
     {path: 'torrents', component: TorrentComponent, canActivate: [AuthGuard]},
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
-    {path: 'forget', component: ForgetComponent},
-    {path: 'forget', component: ForgetComponent},
+    {path: 'login', component: LoginComponent, canActivate: [GuestGaurd]},
+    {path: 'register', component: RegisterComponent, canActivate: [GuestGaurd]},
+    {path: 'forget', component: ForgetComponent, canActivate: [GuestGaurd]},
     {path: 'notifications', component: NotificationsComponent},
     {path: '', redirectTo: 'torrents', pathMatch: 'full'}
 ]

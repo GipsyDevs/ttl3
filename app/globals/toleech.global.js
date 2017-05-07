@@ -8,11 +8,33 @@ var toleechSettings = (function () {
         this.userLoggedInSourece = new BehaviorSubject_1.BehaviorSubject(false);
         this.userLoggedIn$ = this.userLoggedInSourece.asObservable();
     }
-    toleechSettings.prototype.login = function () {
+    toleechSettings.prototype.login = function (data) {
+        if (data != null)
+            localStorage.setItem("userinfo", JSON.stringify(data));
         this.userLoggedInSourece.next(true);
     };
     toleechSettings.prototype.checkLogin = function () {
-        return this.userLoggedInSourece.getValue();
+        if (this.userLoggedInSourece.getValue())
+            return true;
+        try {
+            console.log("Getting info...");
+            if (JSON.parse(localStorage.getItem("userinfo")).status == true) {
+                this.userLoggedInSourece.next(true);
+                return true;
+            }
+        }
+        catch (error) {
+            return false;
+        }
+        return false;
+    };
+    toleechSettings.prototype.logout = function () {
+        this.userLoggedInSourece.next(false);
+        try {
+            localStorage.removeItem("userinfo");
+        }
+        finally {
+        }
     };
     return toleechSettings;
 }());

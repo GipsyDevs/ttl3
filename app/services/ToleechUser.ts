@@ -1,5 +1,5 @@
 export class ToleechUser {
-    id: number;
-    name: string;
-    plan: number;
+    status: boolean;
+    user: string;
+    timestamp: number;
 }

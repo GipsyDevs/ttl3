@@ -40,8 +40,15 @@ var LoginComponent = (function () {
         if (isValid) {
             this.submitted = true;
             this.toleechApi.login(model.name, model.password, token).subscribe(function (data) {
-                _this.toleechlocal.login();
-                _this.router.navigate(['/torrents']);
+                console.log(data);
+                if (data.status == true) {
+                    _this.toleechlocal.login(data);
+                    _this.router.navigate(['/torrents']);
+                }
+                else {
+                    _this.submitted = false;
+                    _this.toasterService.pop('error', 'خطا', 'نام کاربری یا رمز عبور اشتباه است!');
+                }
             }, function (error) {
                 _this.submitted = false;
                 _this.toasterService.pop('error', 'خطا', 'خطایی رخ داده است، اتصال اینترنت خود چک کنید');

@@ -9,7 +9,7 @@
     <div class="nav-container">
         <ul class="nav">
             <li class="active" routerLinkActive="active" id="torrentmenu">
-                <a  [routerLink]="[menuItems[2].path]">
+                <a [routerLink]="[menuItems[2].path]">
                     <i class="material-icons">content_paste</i>
                     <p>{{menuItems[2].title}}</p>
                 </a>
@@ -21,8 +21,8 @@
                 </a>
             </li>
 
-            <li routerLinkActive="active">
-                <a [routerLink]="[menuItems[3].path]">
+            <li>
+                <a (click)="logout()">
                     <i class="material-icons">library_books</i>
                     <p>{{menuItems[3].title}}</p>
                 </a>

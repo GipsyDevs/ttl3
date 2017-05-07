@@ -13,10 +13,9 @@ var torrents_component_1 = require("./torrents/torrents.component");
 exports.MODULE_ROUTES = [
     { path: 'user', component: user_component_1.UserComponent, canActivate: [toleechGuard_service_1.AuthGuard] },
     { path: 'torrents', component: torrents_component_1.TorrentComponent, canActivate: [toleechGuard_service_1.AuthGuard] },
-    { path: 'login', component: login_component_1.LoginComponent },
-    { path: 'register', component: register_component_1.RegisterComponent },
-    { path: 'forget', component: forget_component_1.ForgetComponent },
-    { path: 'forget', component: forget_component_1.ForgetComponent },
+    { path: 'login', component: login_component_1.LoginComponent, canActivate: [toleechGuard_service_1.GuestGaurd] },
+    { path: 'register', component: register_component_1.RegisterComponent, canActivate: [toleechGuard_service_1.GuestGaurd] },
+    { path: 'forget', component: forget_component_1.ForgetComponent, canActivate: [toleechGuard_service_1.GuestGaurd] },
     { path: 'notifications', component: notifications_component_1.NotificationsComponent },
     { path: '', redirectTo: 'torrents', pathMatch: 'full' }
 ];

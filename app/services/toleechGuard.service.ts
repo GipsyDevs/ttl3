@@ -11,8 +11,25 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (this.tlsetting.checkLogin())
-             return true;
-         this.router.navigate(['/login']);
+            return true;
+        this.router.navigate(['/login']);
+        return false;
+
+    }
+}
+
+
+
+@Injectable()
+export class GuestGaurd implements CanActivate {
+
+    constructor(private router: Router,private tlsetting: toleechSettings) {
+    }
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        if (!this.tlsetting.checkLogin())
+            return true;
+        this.router.navigate(['/torrents']);
         return false;
 
     }
